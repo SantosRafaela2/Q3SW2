@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seatwork 2</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #ede7d3;
+            color: #261702;
+            text-align: center;
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+        }
+        .container {
+            margin-top: 50px;
+            padding: 20px;
+            background-color: #fcf1de;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .content {
+            flex: 1;
+        }
+        .btn-custom {
+            width: 200px;
+            margin: 10px;
+            font-size: 18px;
+        }
+        .cat-image {
+            width: 200px;
+            height: auto;
+            border-radius: 10px;
+            margin-left: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container text-center">
+        <div class="content">
+            <h1>Let's Test Your Math Skills! </h1>
+            <p>Enter two numbers and let the cat help you calculate.</p>
+            <form onsubmit="return false;">
+                <div class="mb-3">
+                    <label class="form-label">Enter 1st Number:</label>
+                    <input type="number" id="num1" class="form-control" placeholder="Enter first number">
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Enter 2nd Number:</label>
+                    <input type="number" id="num2" class="form-control" placeholder="Enter second number">
+                </div>
+                <button type="button" class="btn btn-success btn-custom" onclick="plus()">Add</button>
+                <button type="button" class="btn btn-success btn-custom" onclick="subtract()">Subtract</button>
+                <button type="button" class="btn btn-success btn-custom" onclick="multiply()">Multiply</button>
+                <button type="button" class="btn btn-success btn-custom" onclick="divide()">Divide</button>
+            </form>
+            <h3 id="result" class="mt-4"></h3>
+            <form onsubmit="return false;">
+                <label class="form-label">Select an option:</label>
+                <select class="form-select" id="show">
+                    <option value="none">Choose</option>
+                    <option value="1">Value of A</option>
+                    <option value="2">Value of B</option>
+                    <option value="3">Value of C</option>
+                </select>
+                <button type="button" class="btn btn-success btn-custom" onclick="showValue()">Show</button>
+            </form>
+        </div>
+        <img src="https://i.pinimg.com/736x/d9/5d/04/d95d04671bc64f9825471b2c30be2d1d.jpg" alt="Cute Cat" class="cat-image">
+    </div>
+    <script>
+        function plus() {
+            let a = parseFloat(document.getElementById('num1').value);
+            let b = parseFloat(document.getElementById('num2').value);
+            document.getElementById('result').innerHTML = `Sum: ${a + b}`;
+        }
+
+        function subtract() {
+            let a = parseFloat(document.getElementById('num1').value);
+            let b = parseFloat(document.getElementById('num2').value);
+            document.getElementById('result').innerHTML = `Difference: ${a - b}`;
+        }
+
+        function multiply() {
+            let a = parseFloat(document.getElementById('num1').value);
+            let b = parseFloat(document.getElementById('num2').value);
+            document.getElementById('result').innerHTML = `Product: ${a * b}`;
+        }
+
+        function divide() {
+            let a = parseFloat(document.getElementById('num1').value);
+            let b = parseFloat(document.getElementById('num2').value);
+            if (b === 0) {
+                document.getElementById('result').innerHTML = "Cannot divide by zero!";
+            } else {
+                document.getElementById('result').innerHTML = `Quotient: ${a / b}`;
+            }
+        }
+
+        function showValue() {
+            let selection = document.getElementById('show').value;
+            let displayText = "";
+            if (selection === "1") {
+                displayText = "You selected Value of A";
+            } else if (selection === "2") {
+                displayText = "You selected Value of B";
+            } else if (selection === "3") {
+                displayText = "You selected Value of C";
+            } else {
+                displayText = "Please choose an option.";
+            }
+            document.getElementById('result').innerHTML = displayText;
+        }
+    </script>
+</body>
+</html>
